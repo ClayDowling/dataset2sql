@@ -69,5 +69,5 @@ void row_sql(cJSON *row, const char *table) {
     }
     printf("'%s'", cJSON_GetStringValue(cur));
   }
-  printf(");");
+  printf(");\n");
 }
