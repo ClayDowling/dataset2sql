@@ -39,9 +39,9 @@ int main(int argc, char **argv) {
 }
 
 void dataset_walk(cJSON *first) {
-  for (cJSON *cur = first; cur != NULL; cur = cur->next) {
-    const char *tablename = cur->child->string;
-    table_sql(cur->child, tablename);
+  for (cJSON *cur = first->child; cur != NULL; cur = cur->next) {
+    const char *tablename = cur->string;
+    table_sql(cur, tablename);
   }
 }
 
