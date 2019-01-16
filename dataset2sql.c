@@ -67,7 +67,17 @@ void row_sql(cJSON *row, const char *table) {
     if (cur != row->child) {
       printf(", ");
     }
-    printf("'%s'", cJSON_GetStringValue(cur));
+    if (cJSON_IsNumber(cur)) {
+      if (cur->valuedouble == cur->valueint) {
+        printf("%d", cur->valueint);
+      } else {
+        printf("%f", cur->valuedouble);
+      }
+    } else if (cJSON_IsNull(cur)) {
+      printf("NULL");
+    } else {
+      printf("'%s'", cJSON_GetStringValue(cur));
+    }
   }
   printf(");\n");
 }
